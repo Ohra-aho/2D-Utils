@@ -47,6 +47,7 @@ public class SoundPlayer : MonoBehaviour
         volume = newVolume;
     }
 
+    //Clip controlling
     public void ChangeClip(int index)
     {
         GetComponent<AudioSource>().clip = clips[index];
