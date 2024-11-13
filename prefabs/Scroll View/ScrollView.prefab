@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Content: {fileID: 3752555245796245601}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -234,8 +234,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c2ee0bcc1aead468f969be225bff12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

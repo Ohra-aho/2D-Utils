@@ -6,6 +6,7 @@ public class SoundPlayer : MonoBehaviour
 {
     public List<AudioClip> clips; //Clips to be played
     public bool ongoing; //true if sound is meant to be continious
+    public bool instant; //true if sound is meant to play as gameobject appears 
     public float volume = 1.0f;
     public bool mute = false;
 
@@ -31,8 +32,11 @@ public class SoundPlayer : MonoBehaviour
         GetComponent<AudioSource>().clip = clips[0];
         if (ongoing)
         {
-            GetComponent<AudioSource>().Play();
             GetComponent<AudioSource>().loop = true;
+        }
+        if(instant)
+        {
+            GetComponent<AudioSource>().Play();
         }
     }
 
