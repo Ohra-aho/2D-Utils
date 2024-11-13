@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundSettings : MonoBehaviour
 {
+    //Place to games EventSystem or similar gameobject
+
     public List<SoundTarget> soundTargets = new List<SoundTarget>();
     // Start is called before the first frame update
     void Start()
@@ -13,19 +15,20 @@ public class SoundSettings : MonoBehaviour
         soundTargets.Add(new SoundTarget("Sound Effects", false, 1));
     }
 
-    // Update is called once per frame
-    void Update()
+    //Changes values of sound targets
+    public void ChangeValues(string type, bool mute, float volume)
     {
-        
+        for(int i = 0; i < soundTargets.Count; i++)
+        {
+            if(soundTargets[i].name == type)
+            {
+                soundTargets[i].volume = volume;
+                soundTargets[i].mute = mute;
+            }
+        }
     }
-
-    private void MakeSettingBar(SoundTarget sountTarget)
-    {
-
-    }
-
-    
 }
+
 public class SoundTarget
 {
     public string name;
@@ -39,5 +42,3 @@ public class SoundTarget
         this.volume = volume;
     }
 }
-
-

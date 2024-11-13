@@ -6,37 +6,38 @@ using UnityEngine.UI;
 
 public class ScrollView : MonoBehaviour
 {
-    public List<GameObject> content;
+    //public List<GameObject> content;
 
     // Start is called before the first frame update
     void Start()
     {
-        AdjustScrollSize();
-        DisplayContent();
     }
 
     //Instansiates content
-    public void DisplayContent()
+    public void DisplayContent(List<GameObject> content)
     {
         GameObject scroll = transform.GetChild(0).gameObject;
         for(int i = 0; i < content.Count; i++)
         {
             Instantiate(content[0], scroll.transform);
         }
+        AdjustScrollSize();
+
     }
 
     //Changes scrolls size according to amount of content
-    private void AdjustScrollSize()
+    public void AdjustScrollSize()
     {
         //Get info
         float scrollViewHeight = GetComponent<RectTransform>().sizeDelta.y;
         float cellSizeY = transform.GetChild(0).GetComponent<GridLayoutGroup>().cellSize.y;
         float cellSpacingY = transform.GetChild(0).GetComponent<GridLayoutGroup>().spacing.y;
         RectTransform contentTransform = transform.GetChild(0).GetComponent<RectTransform>();
+        int contentCount = transform.GetChild(0).childCount;
 
         //Calculate required scrolls size
         float requiredScrollHeight
-            = content.Count * cellSizeY + content.Count * cellSpacingY;
+            = contentCount * cellSizeY + contentCount * cellSpacingY;
 
         //Make size andjustments
         contentTransform.sizeDelta = new Vector2(

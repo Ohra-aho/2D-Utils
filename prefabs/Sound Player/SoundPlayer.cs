@@ -9,6 +9,9 @@ public class SoundPlayer : MonoBehaviour
     public float volume = 1.0f;
     public bool mute = false;
 
+    public string type; //Used to find data from settings. Type and the name of the sound target have to match
+    public string settings = "EventSystem";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,16 @@ public class SoundPlayer : MonoBehaviour
     //Changes volume and mute according to public values
     public void Upkeep()
     {
+        //Get sound targets from settings and adapt to them
+        List<SoundTarget> soundTargets = GameObject.Find(settings).GetComponent<SoundSettings>().soundTargets;
+        for(int i = 0; i < soundTargets.Count; i++)
+        {
+            if(soundTargets[i].name == type)
+            {
+                mute = soundTargets[i].mute;
+                volume = soundTargets[i].volume;
+            }
+        }
         if (GetComponent<AudioSource>().mute != mute) GetComponent<AudioSource>().mute = mute;
         if (GetComponent<AudioSource>().volume != volume) GetComponent<AudioSource>().volume = volume;
     }
